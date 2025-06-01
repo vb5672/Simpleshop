@@ -1,0 +1,15 @@
+<!-- templates/checkout.html -->
+{% extends 'base.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+{% for product in products %}
+<div class="card m-2 p-2">
+    <h5>{{ product.name }}</h5>
+    <p>₹{{ product.price }}</p>
+    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-success">Add to Cart</a>
+</div>
+{% endfor %}
+
+{% endblock %}

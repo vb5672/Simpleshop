@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Marketplace - Payment
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3><strong>
+        Total Amount:
+        <span style="color:orangered;">
+            {{ currency_symbol }} {{ total_amount|floatformat:2 }}
+        </span>
+    </strong></h3>
+
+    <p>Click the button below to proceed with payment.</p>
+    <button class="btn btn-success btn-lg" id="pay-btn">Make Payment Now</button>
+</div>
+
+<!-- Correct Razorpay Checkout script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    var options = {
+        key: "{{ razorpay_merchant_key }}",
+        amount: "{{ razorpay_amount }}",
+        currency: "{{ currency }}",
+        name: "Marketplace Payment",
+        description: "Test Transaction",
+        order_id: "{{ razorpay_order_id }}",
+        callback_url: "{{ callback_url }}",
+        // handler: function (response){
+        //     alert("Payment ID: " + response.razorpay_payment_id);
+        // }
+    };
+
+    var rzp1 = new Razorpay(options);
+
+    document.getElementById("pay-btn").onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+    };
+</script>
+{% endblock content %}

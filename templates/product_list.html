@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="container">
+<h2>Available Products</h2>
+
+    <div class="row">
+    {% for product in products %}
+    <div class="col-md-2 mt-3">
+        <div class="card">
+            <strong>{{ product.name }}</strong> - ₹{{ product.price }}
+            <a href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

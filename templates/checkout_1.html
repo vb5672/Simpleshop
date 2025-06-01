@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkoot and Make Payment{% endblock %}
+
+{% block content %}
+<h3>Checkout</h3>
+<p>Pay ₹{{ order.amount }}</p>
+
+<form action="https://checkout.razorpay.com/v1/checkout.js" method="POST">
+    <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="{{ razorpay_key_id }}"
+        data-amount="{{ amount }}"
+        data-currency="INR"
+        data-order_id="{{ order.razorpay_order_id }}"
+        data-buttontext="Pay with Razorpay"
+        data-name="Demo Store"
+        data-description="Test Transaction"
+        data-theme.color="#F37254">
+    </script>
+</form>
+{% endblock content %}

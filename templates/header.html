@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <ul class="navbar-nav ml-auto">
+      <li class="nav-link" class="nav-item">
+          <a class="btn btn-primary btn-sm" href="{% url 'product_list' %}">Products</a>
+          <li>
+      <li class="nav-link" class="nav-item">
+          <a class="btn btn-success btn-sm" href="{% url 'cart' %}">Cart ({{cart_count}})</a> 
+      </li>
+      
+  {% if request.user.is_authenticated %}
+    <li class="nav-link" class="nav-item">
+        <a class= "btn btn-danger btn-sm" href="{% url 'logout' %}">Logout</a>
+    </li>
+      <li class="nav-link" class="nav-item">
+      <a class="text-white text-decoration-none">Logged in as {{ user.username }} </a>
+      </li>
+    
+  {% else %}
+    <li class="nav-link" class="nav-item">
+            <a class="btn btn-primary btn-sm" href="{% url 'signup' %}">Signup</a> 
+    </li>
+    <li class="nav-link" class="nav-item">
+        <a class="btn btn-success btn-sm" href="{% url 'login' %}">Login</a> 
+    </li>
+   {% endif %}
+
+
+</nav>
