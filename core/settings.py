@@ -172,6 +172,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/'
 
-RAZOR_KEY_ID = 'rzp_test_xCF2LEnNkcxnhR'
+RAZOR_KEY_ID = ''
 
-RAZOR_KEY_SECRET = 'qynm5ZgnEZVB6NG5fjeRILuK'
+RAZOR_KEY_SECRET = ''
