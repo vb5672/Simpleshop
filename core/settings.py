@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,25 +76,25 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     }
+ }
 
 # PostGreSQL
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'trypostgresql',
-        'USER': 'admin',
-        'PASSWORD': 'Admin@123',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'trypostgresql',
+#        'USER': 'admin',
+#        'PASSWORD': 'Admin@123',
+#        'HOST': '127.0.0.1',
+#        'PORT': '5432',
+#    }
+#}
 
 
 #MYSQL
@@ -163,15 +164,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+#STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+ os.path.join(BASE_DIR, 'static'),]
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# Default primary key field type https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+# If you have any additional static directories for dev use, e.g.,
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/'
 
-RAZOR_KEY_ID = ''
+#RAZOR_KEY_ID = ''
 
-RAZOR_KEY_SECRET = ''
+#RAZOR_KEY_SECRET = ''
+
+
+RAZOR_KEY_ID = 'rzp_test_xCF2LEnNkcxnhR'
+
+RAZOR_KEY_SECRET = 'qynm5ZgnEZVB6NG5fjeRILuK'
