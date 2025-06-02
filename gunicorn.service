@@ -1,0 +1,22 @@
+[Unit]
+
+Description=gunicorn daemon
+
+After=network.target
+
+
+[Service]
+
+User=ubuntu
+
+Group=www-data
+
+WorkingDirectory=/home/ubuntu/django/simpleshop
+
+ExecStart=/home/ubuntu/django/simpleshop/ss_env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/django/simpleshop/simpleshop.sock core.wsgi:application
+
+
+[Install]
+
+WantedBy=multi-user.target
+
